@@ -4,12 +4,12 @@
   tasks:
   - name: import glusterfs key
     apt_key:
-      url: http://download.gluster.org/pub/gluster/glusterfs/3.7/3.7.6/pub.key
+      url: http://download.gluster.org/pub/gluster/glusterfs/3.7/LATEST/pub.key
       state: present
     
   - name: ensure glusterfs repo is added
     apt_repository:
-      repo: deb http://download.gluster.org/pub/gluster/glusterfs/3.7/3.7.6/Debian/jessie/apt jessie main
+      repo: deb http://download.gluster.org/pub/gluster/glusterfs/3.7/LATEST/Debian/jessie/apt jessie main
       state: present
 
   - name: install the latest package
