@@ -1,4 +1,4 @@
---
+---
 - hosts: all
   remote_user: root
   tasks:
@@ -14,4 +14,4 @@
   - name: install required packages
     apt:
       update_cache: yes
-      name: opennebula opennebula-node
+      name: opennebula,opennebula-node
