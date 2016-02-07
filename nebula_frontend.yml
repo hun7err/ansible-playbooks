@@ -15,3 +15,6 @@
     apt:
       update_cache: yes
       name: opennebula opennebula-sunstone
+
+  - name: disable strict host key checking
+    shell: sudo -u oneadmin "echo -e \"Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile /dev/null\n\" > /home/oneadmin/.ssh/config" && chmod 600 /home/oneadmin/.ssh/config
