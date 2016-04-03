@@ -1,4 +1,6 @@
 ---
+- include: repositories/grafana.yml
+
 - name: Install Grafana
   apt:
     update_cache: yes

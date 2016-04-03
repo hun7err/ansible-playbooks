@@ -1,5 +1,5 @@
 ---
-- import: opennebula_repo.yml
+- include: repositories/opennebula.yml
 
 - name: install required packages
   apt:

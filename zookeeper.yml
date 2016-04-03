@@ -1,5 +1,5 @@
 ---
-- include: mesosphere_repo.yml
+- include: repositories/mesosphere.yml
 
 - name: install Zookeeper
   apt:

@@ -1,5 +1,5 @@
 ---
-- import: repositories/influxdata.yml
+- include: repositories/influxdata.yml
 
 - name: install InfluxDB
   apt:
