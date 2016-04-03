@@ -1,0 +1,10 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+  - include: mesosphere_repo.yml
+
+  - name: install Mesos
+    apt:
+      update_cache: yes
+      name: mesos
