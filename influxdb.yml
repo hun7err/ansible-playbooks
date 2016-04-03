@@ -1,0 +1,20 @@
+---
+- import: repositories/influxdata.yml
+
+- name: install InfluxDB
+  apt:
+    update_cache: yes
+    name: influxdb
+
+- name: copy the config file
+  copy:
+    src: {{ local_config_path }}
+    dest: /etc/influxdb/influxdb.conf
+    mode: 0400
+    owner: influxdb
+  when: import_config
+
+- name: Restart the InfluxDB service
+  service:
+    name: influxdb
+    state: restarted

@@ -1,0 +1,21 @@
+---
+- import: repositories/influxdata.yml
+
+- name: install Telegraf
+  apt:
+    update_cache: yes
+    name: telegraf
+
+- name: copy the config file
+  copy:
+    src: {{ local_config_path }}
+    dest: /etc/telegraf/telegraf.conf
+    mode: 0440
+    owner: telegraf
+    group: telegraf
+  when: import_config
+
+- name: Restart the Telegraf service
+  service:
+    name: telegraf
+    state: restarted

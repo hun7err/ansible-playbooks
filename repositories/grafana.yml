@@ -1,0 +1,11 @@
+---
+- name: import the Grafana repo key
+  apt_key:
+    url: https://packagecloud.io/gpg.key
+    state: present
+
+- name: add the Grafana repo for Debian stable
+  apt_repository:
+    repo: deb https://packagecloud.io/grafana/testing/debian/ jessie main
+    state: present
+ 

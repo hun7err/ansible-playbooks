@@ -1,0 +1,10 @@
+---
+- name: import the InfluxData repo key
+  apt_key:
+    url: https://repos.influxdata.com/influxdb.key
+    state: present
+  
+- name: add the InfluxData repository
+  apt_repository:
+    repo: deb https://repos.influxdata.com/debian jessie stable
+    state: present

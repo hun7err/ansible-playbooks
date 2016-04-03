@@ -1,52 +1,49 @@
 ---
-- hosts: all
-  tasks:
-  - include: mesosphere_repo.yml
-  - include: zookeeper.yml
-  - include: mesos.yml
+- include: mesosphere_repo.yml
+- include: zookeeper.yml
+- include: mesos.yml
 
-  - name: install Marathon
-    apt:
-      update_cache: yes
-      name: marathon
+- name: install Marathon
+  apt:
+    update_cache: yes
+    name: marathon
 
-  - name: set the Zookeeper node ID
-    copy:
-      content: "1"
-      dest: /etc/zookeeper/conf/myid
+- name: set the Zookeeper node ID
+  copy:
+    content: "1"
+    dest: /etc/zookeeper/conf/myid
 
-  - name: add Zookeeper nodes
-    copy:
-      content: "server.1=127.0.0.1:2888:3888"
-      dest: /etc/zookeeper/conf/zoo.cfg
+- name: add Zookeeper nodes
+  copy:
+    content: "server.1=127.0.0.1:2888:3888"
+    dest: /etc/zookeeper/conf/zoo.cfg
 
-  - name: restart the Zookeeper service
-    service:
-      name: zookeeper
-      state: restarted
+- name: restart the Zookeeper service
+  service:
+    name: zookeeper
+    state: restarted
 
-  - name: set the Mesos master
-    copy:
-      content: "zk://127.0.0.1:2181/mesos"
-      dest: /etc/mesos/zk
+- name: set the Mesos master
+  copy:
+    content: "zk://127.0.0.1:2181/mesos"
+    dest: /etc/mesos/zk
 
-  - name: set the Mesos quorum
-    copy:
-      content: "1"
-      dest: "/etc/mesos-master/quorum"
+- name: set the Mesos quorum
+  copy:
+    content: "1"
+    dest: "/etc/mesos-master/quorum"
 
-  - name: restart the Mesos slave service
-    service:
-      name: mesos-slave
-      state: restarted
+- name: restart the Mesos slave service
+  service:
+    name: mesos-slave
+    state: restarted
 
-  - name: restart the Mesos master service
-    service:
-      name: mesos-master
-      state: restarted
+- name: restart the Mesos master service
+  service:
+    name: mesos-master
+    state: restarted
 
-  - name: restart the Marathon service
-    service:
-      name: marathon
-      state: restarted
-
+- name: restart the Marathon service
+  service:
+    name: marathon
+    state: restarted

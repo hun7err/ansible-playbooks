@@ -1,0 +1,10 @@
+---
+- name: Install Grafana
+  apt:
+    update_cache: yes
+    name: grafana
+
+- name: Start the Grafana server service
+  service:
+    name: grafana-server
+    state: started

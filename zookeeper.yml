@@ -1,10 +1,7 @@
 ---
-- hosts: all
-  remote_user: root
-  tasks:
-  - include: mesosphere_repo.yml
+- include: mesosphere_repo.yml
 
-  - name: install Zookeeper
-    apt:
-      update_cache: yes
-      name: zookeeper
+- name: install Zookeeper
+  apt:
+    update_cache: yes
+    name: zookeeper
