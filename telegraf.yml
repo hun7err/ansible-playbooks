@@ -8,7 +8,7 @@
 
 - name: copy the config file
   copy:
-    src: {{ local_config_path }}
+    src: "{{ local_config_path }}"
     dest: /etc/telegraf/telegraf.conf
     mode: 0440
     owner: telegraf
