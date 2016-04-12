@@ -1,0 +1,16 @@
+---
+- name: install obligatory packages
+  apt:
+    update_cache: yes
+    name: apt-transport-https,ca-certificates
+    state: latest
+
+- name: import the Docker repo key
+  apt_key:
+    keyserver: p80.pool.sks-keyservers.net:80
+    id: 58118E89F3A912897C070ADBF76221572C52609D
+  
+- name: add the Docker repository
+  apt_repository:
+    repo: deb https://apt.dockerproject.org/repo debian-jessie main
+    state: present
